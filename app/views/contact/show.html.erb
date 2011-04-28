@@ -1,0 +1,36 @@
+<div id="main">
+  <% form_for :contact, :url => contact_path do |form| %>
+
+    <% if @contact && @contact.errors.any? %>
+      <ul class="errors">
+        <% @contact.errors.each_pair do |attribute, messages| %>
+          <li><%= '%s: %s' % [attribute.to_s.titlecase, messages.join] %></li>
+        <% end %>
+      </ul>
+      <hr />
+    <% end %>
+
+    <p>
+      <%= form.label :email, 'Your Email Address' %>
+    </p>
+    <p>
+      <%= form.text_field :email %>
+    </p>
+
+    <p>
+      <%= form.label :subject %>
+    </p>
+    <p>
+      <%= form.text_field :subject %>
+    </p>
+
+    <p>
+      <%= form.label :body %>
+    </p>
+    <p>
+      <%= form.text_area :body %>
+    </p>
+
+    <%= submit_tag 'Submit' %>
+  <% end %>
+</div>

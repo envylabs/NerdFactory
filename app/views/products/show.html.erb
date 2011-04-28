@@ -1,0 +1,26 @@
+<div id="paginationTop">
+	<p class="left"><%= @product.name %></p>
+</div>
+
+<div id="main">
+  <div class="gallery">
+
+  	<div id="itemImage">
+  		<div id="slideshow" class="pics">
+  		  <%= link_to image_tag(@product.picture.url, :size => '420x420', :alt => @product.name) + (@product.new? ? image_tag('new.png', :alt => 'New Item', :class => 'itemNew') : ''), @product.picture.url, :class => 'single_image' %>
+  		</div>
+  	</div>
+
+  	<div id="itemDetails">
+  		<h2><%= @product.name %></h2>
+  		<p class="itemPrice"><%= number_to_currency @product.price %></p>
+  		<%= simple_format @product.description %>
+  		<p></p>
+      
+      <p>
+        <%= link_to raw('<span class="buttonAddToShoppingBag">Add to Shopping Bag</span>'), cart_path(:product_id => @product.id), :method => :post %>
+      </p>
+  	</div>
+
+  </div>
+</div>

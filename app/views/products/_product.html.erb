@@ -1,0 +1,5 @@
+<div class="item">
+  <%= link_to image_tag(product.picture.url(:thumbnail), :size => '190x190', :alt => product.name, :class => 'itemImage') + (product.new? ? image_tag('new.png', :alt => 'New Item', :class => 'itemNew') : ''), product_path(product) %>
+	<p class="itemName"><%= link_to product.name, product_path(product) %></p>
+	<p class="itemPrice"><%= number_to_currency product.price %></p>
+</div><!-- end item -->

@@ -1,0 +1,91 @@
+<!--
+t.integer  "site_id",                                   :null => false
+t.string   "given_name",                 :limit => 250
+t.string   "surname",                    :limit => 250
+t.string   "last_four_digits",           :limit => 4
+t.integer  "expiration_month",           :limit => 1
+t.integer  "expiration_year",            :limit => 2
+t.string   "gateway_identifier",         :limit => 250
+t.string   "state",                      :limit => 100, :null => false
+t.datetime "created_at"
+t.datetime "updated_at"
+t.string   "first_six_digits",           :limit => 6
+t.string   "email",                      :limit => 500
+t.string   "gateway_payment_identifier", :limit => 250
+t.string   "address1"
+t.string   "address2"
+t.string   "locality"
+t.string   "region"
+t.string   "postal_code"
+t.string   "country"
+t.string   "phone"
+-->
+
+<%= form.error_messages %>
+<p class="text_field">
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+</p>
+<p class="text_field">
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name %>
+</p>
+<p class="text_field">
+  <%= form.label :last_name %>
+  <%= form.text_field :last_name %>
+</p>
+<p class="password_field">
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+</p>
+<p class="password_field">
+  <%= form.label :password_confirmation, "Confirm password" %>
+  <%= form.password_field :password_confirmation %>
+</p>
+
+<% form.fields_for @user.credit_card do |credit_card_form| %>
+<p>
+  <%= credit_card_form.label :number %>
+  <%= credit_card_form.text_field :number %>
+</p>
+<p>
+  <%= credit_card_form.label :security_code %>
+  <%= credit_card_form.text_field :security_code %>
+</p>
+<p>
+  <%= credit_card_form.label :expiration_date %>
+  <%= credit_card_form.text_field :expiration_date %>
+</p>
+<% end %>
+
+<% form.fields_for @user.address do |address_form| %>
+<p>
+  <%= address_form.label :address %>
+  <%= address_form.text_field :address %>
+</p>
+<p>
+  <%= address_form.label :address2 %>
+  <%= address_form.text_field :address2 %>
+</p>
+<p>
+  <%= address_form.label :locality, 'City' %>
+  <%= address_form.text_field :locality %>
+</p>
+<p>
+  <%= address_form.label :region, 'State' %>
+  <%= address_form.text_field :region %>
+</p>
+<p>
+  <%= address_form.label :postal_code, 'Zip code' %>
+  <%= address_form.text_field :postal_code %>
+</p>
+<p>
+  <%= address_form.label :country %>
+  <%= address_form.text_field :country %>
+</p>
+<p>
+  <%= address_form.label :phone %>
+  <%= address_form.text_field :phone %>
+</p>
+
+<% end %>

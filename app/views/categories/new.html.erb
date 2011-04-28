@@ -1,0 +1,14 @@
+<div id="paginationTop">
+	<p class="left">Create a new category.</p>
+</div>
+
+<div id="main">
+  <% form_for @category do |form| %>
+    <%= form.error_messages %>
+
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+
+    <%= submit_tag 'Create' %>
+  <% end %>
+</div>

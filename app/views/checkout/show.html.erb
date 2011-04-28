@@ -1,0 +1,58 @@
+<div id="main">
+	<h2>Checkout</h2>
+	
+	<table id="shoppingBag-table">
+	  
+		<thead>
+			<tr>
+				<th scope="col" id="thumbnail"></th>
+				<th scope="col" id="itemName"><span class="left">Item Name</span></th>
+				<th scope="col" id="price">Price</th>
+				<th scope="col" id="quantity">Quantity</th>
+				<th scope="col" id="total">Total</th>
+			</tr>
+		</thead>
+
+		<tfoot>
+			<tr>
+				<td colspan="4"><span class="costBeforeShipping right">Cost before shipping</span></td>
+				<td colspan="5"><span class="totalPrice">=&nbsp;<strong><%= number_to_currency current_order.price %></strong></span></td>
+			</tr>
+			<tr class="noBorder">
+				<td colspan="6">
+				  <span class="right">
+				    <%= link_to 'Back to Shopping Cart', cart_path %>
+				    or
+				    <%= link_to 'Confirm and Checkout!', checkout_path, :method => :post %>
+				  </span>
+				</td>
+			</tr>
+		</tfoot>
+		
+		<tbody>
+		  
+		  <% if current_order.products.empty? %>
+		    <tr><td colspan="6">Your cart is currently empty.</td></tr>
+		  <% else %>
+  		  <% current_order.line_items(:include => :product).each do |line_item| %>
+          <tr>
+    				<td class="thumb"><%= link_to image_tag(line_item.product.picture.url(:thumbnail), :size => '60x60', :alt => line_item.product.name), line_item.product.picture.url, :class => 'single_image' %></td>
+    				<td class="left"><%= link_to line_item.product.name, product_path(line_item.product) %></td>
+    				<td><%= number_to_currency line_item.product.price %></td>
+    				<td><span class="amount"><%= line_item.quantity %></span></td>
+    				<td class="itemTotal"><%= number_to_currency line_item.price %></td>
+    			</tr>
+        <% end %>
+		  <% end %>
+		  
+		  <tr>
+		    <td colspan="5">
+		    </td>
+		  </tr>
+      
+		</tbody>
+	<!-- Table body end -->
+
+	</table><!-- end shoppingBag-table -->
+	
+</div><!-- end main -->

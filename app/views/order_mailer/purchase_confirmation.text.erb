@@ -1,0 +1,9 @@
+We appreciate your business
+
+Your order includes:
+Name | Price | Quantity
+<% @order.line_items.each do |line_item| %>
+  <%= '%s | %s | %s' % [line_item.product.name, line_item.product.price, line_item.quantity] %>
+<% end %>
+
+Total for your order is: $<%= @order.price %>

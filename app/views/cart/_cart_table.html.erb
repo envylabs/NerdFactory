@@ -1,0 +1,50 @@
+<table id="shoppingBag-table">
+
+  <thead>
+    <tr>
+      <th scope="col" id="thumbnail"></th>
+      <th scope="col" id="itemName"><span class="left">Item Name</span></th>
+      <th scope="col" id="price">Price</th>
+      <th scope="col" id="quantity">Quantity</th>
+      <th scope="col" id="total">Total</th>
+      <th scope="col" id="remove"></th>
+    </tr>
+  </thead>
+
+  <tfoot>
+    <tr>
+      <td colspan="4"><span class="costBeforeShipping right">Cost before shipping</span></td>
+      <td colspan="5"><span class="totalPrice">=&nbsp;<strong><%= number_to_currency current_order.price %></strong></span></td>
+    </tr>
+    <tr class="noBorder">
+      <td colspan="6">
+        <span class="right"><%= link_to raw('<span class="buttonProceedToCheckout">Proceed To Checkout</span>'), checkout_path %></span>
+        <span class="continueShopping right"><%= link_to 'Continue shopping', root_url %> or</span>
+      </td>
+    </tr>
+  </tfoot>
+
+  <tbody>
+    <% if current_order.products.empty? %>
+      <tr><td colspan="6">Your cart is currently empty.</td></tr>
+    <% else %>
+      <% current_order.line_items(:include => :product).each do |line_item| %>
+        <tr>
+          <td class="thumb"><%= link_to image_tag(line_item.product.picture.url(:thumbnail), :size => '60x60', :alt => line_item.product.name), line_item.product.picture.url, :class => 'single_image' %></td>
+          <td class="left"><%= link_to line_item.product.name, product_path(line_item.product) %></td>
+          <td><%= number_to_currency line_item.product.price %></td>
+          <td>
+            <%= link_to '&lt;', cart_path(:product_id => line_item.product.id, :quantity => line_item.quantity - 1), :method => :put, :class => 'buttonLess' %>
+            <span class="amount"><%= line_item.quantity %></span>
+            <%= link_to '&gt;', cart_path(:product_id => line_item.product.id, :quantity => line_item.quantity + 1), :method => :put, :class => 'buttonMore' %>
+          </td>
+          <td class="itemTotal"><%= number_to_currency line_item.price %></td>
+          <td>
+            <%= link_to raw('<span class="buttonRemove">Remove</span>'), cart_path(:product_id => line_item.product.id), :method => :delete, :title => 'Remove' %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+
+</table><!-- end shoppingBag-table -->

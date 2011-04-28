@@ -1,0 +1,87 @@
+/* Rounded Corners */
+
+.m-tl {
+	background: url(../img/ie-corners.png) no-repeat;
+	background-position: 0 0;
+	height: 6px;
+	margin: -35px 0 0 -20px;
+	position: absolute; 
+	width: 6px;
+}
+.m-tr {
+	background: url(../img/ie-corners.png) no-repeat;
+	background-position: -6px 0;
+	height: 6px;
+	margin: -35px 0 0 934px;
+	position: absolute; 
+	width: 6px;
+}
+.m-bl {
+	background: url(../img/ie-corners.png) no-repeat;
+	background-position: 0 -6px;
+	height: 6px;
+	margin: 29px 0 0 -20px;
+	position: absolute; 
+	width: 6px;
+}
+.m-br {
+	background: url(../img/ie-corners.png) no-repeat;
+	background-position: -6px -6px;
+	height: 6px;
+	margin: 29px 0 0 934px;
+	position: absolute; 
+	width: 6px;
+}
+.f-tl {
+	background: url(../img/ie-corners.png) no-repeat;
+	background-position: -12px 0;
+	height: 6px;
+	margin: -30px 0 0 -550px;
+	position: absolute; 
+	width: 6px;
+}
+.f-tr {
+	background: url(../img/ie-corners.png) no-repeat;
+	background-position: -18px 0;
+	height: 6px;
+	margin: -30px 0 0 404px;
+	position: absolute; 
+	width: 6px;
+}
+.f-bl {
+	background: url(../img/ie-corners.png) no-repeat;
+	background-position: -12px -6px;
+	height: 6px;
+	margin: 34px 0 0 -550px;
+	position: absolute; 
+	width: 6px;
+}
+.f-br {
+	background: url(../img/ie-corners.png) no-repeat;
+	background-position: -18px -6px;
+	height: 6px;
+	margin: 34px 0 0 404px;
+	position: absolute; 
+	width: 6px;
+}
+
+/* Some Fixing*/
+
+#home .itemNew {
+	margin-left: -54px;
+	position: absolute;
+}
+
+#item .itemNew {
+	margin-left: -50px;
+	position: absolute;
+}
+
+.clearBottom {
+	height: 20px;
+}
+
+#shoppingBag-table td.left { text-align: left; }
+#shoppingBag-table tbody td { border-bottom: 1px solid #dadada; }
+#shoppingBag-table .buttonLess { margin-left: -86px;}
+#shoppingBag-table .buttonMore { margin-left: -25px;}

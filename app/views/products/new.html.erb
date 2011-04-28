@@ -1,0 +1,31 @@
+<div id="paginationTop">
+	<p class="left">Create a new product for <%= @category.name %></p>
+</div>
+
+<div id="main">
+  <% form_for @product, :url => category_products_path(@category), :html => { :multipart => true } do |form| %>
+    <%= form.error_messages %>
+
+    <p>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </p>
+
+    <p>
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </p>
+
+    <p>
+      <%= form.label :price %>
+      <%= form.text_field :price %>
+    </p>
+
+    <p>
+      <%= form.label :picture %>
+      <%= form.file_field :picture %>
+    </p>
+
+    <%= submit_tag 'Create' %>
+  <% end %>
+</div>

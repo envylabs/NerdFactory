@@ -1,0 +1,15 @@
+<div id="paginationTop">
+  <p class="left">Showing <strong><%= @category.name %></strong> (<%= @products.total_entries %>)</p>
+  <%= will_paginate @products, :class => 'pageButtons' %>
+</div>
+
+<div id="main">
+  <div id="items">
+    <%= render @products %>
+  </div>
+</div>
+
+<div id="paginationBottom">
+  <p class="left">Showing <strong><%= @category.name %></strong> (<%= @products.total_entries %>)</p>
+  <%= will_paginate @products, :class => 'pageButtons' %>
+</div>

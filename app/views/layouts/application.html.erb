@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="en-US" lang="en-US" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title><%= yield(:title) %></title>
+    <meta name="description" content="<%= yield(:description) %>" />
+    <meta name="keywords" content="<%= yield(:keywords) %>" />
+    <meta name="robots" content="INDEX,FOLLOW" />
+
+    <%= stylesheet_link_tag 'default' %>
+    <!--[if IE 7]><%= stylesheet_link_tag 'ie7-fix' %><![endif]-->
+    <!--[if gt IE 7]><%= stylesheet_link_tag 'ie8-fix' %><![endif]-->
+
+    <%= javascript_include_tag 'jquery', 'rails', 'application' %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body class="<%= body_class %>">
+    <% if flash %>
+      <% flash.each do |key, value| %>
+        <div class="flash flash_<%= key %>"><%=h value %></div>
+      <% end %>
+    <% end %>
+      
+    <div id="container">
+      <!--[if IE]><div class="m-tl"></div><div class="m-tr"></div><![endif]-->
+      
+      <div id="header">
+        <h1><%= link_to 'nerdfactory', root_url, :title => 'nerdfactory' %></h1>
+      
+        <div id="details">
+          
+          <span class="details">
+            <% if user_signed_in? %>
+              <%= link_to 'Sign out', destroy_user_session_path %>
+            <% else %>
+              <%= link_to 'Sign in', new_user_session_path %>
+              <span class="topDivider">|</span>
+              <%= link_to 'Sign up', new_user_registration_path %>
+            <% end %>
+            
+            <span class="topDivider">|</span>
+            <%= pluralize(current_order.line_items.count, 'item') %>
+            <span class="topDivider">|</span>
+            <%= number_to_currency current_order.price %>
+          </span>
+          
+          <%= link_to raw('<span class="shoppingBag">Shopping Bag</span>'), cart_path, :title => 'Shopping Bag' %>
+          <%= link_to raw('<span class="checkout">Checkout</span>'), checkout_path %>
+        </div>
+      </div>
+    
+      <div id="content">
+      
+        <div id="categoriesBar">
+
+          <ul>
+            <li><%= link_to 'All', root_url, :class => current_page?(root_url) ? 'active' : '' %> <span class="navDivider">//</span></li>
+            <% Category.all(:order => :name).each do |category| %>
+              <li><%= link_to category.name, category_path(category), :class => current_page?(category_path(category)) ? 'active' : '' %> <span class="navDivider">//</span></li>
+            <% end %>
+          </ul>
+
+          <input type="text" name="test" value="Search.." onfocus="if(this.value == 'Search..') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search..';}" id="searchBox" />
+          <input type="submit" name="submit" id="searchSubmit" value="" />
+
+        </div>
+
+        <%= yield %>
+
+      </div>
+    
+      <!--[if IE]><div class="m-bl"></div><div class="m-br"></div><![endif]-->
+    </div>
+  
+    <div id="footer">
+      <!--[if IE]><div class="f-tl"></div><div class="f-tr"></div><![endif]-->
+    
+      <div id="navigation">
+        <ul>
+          <li><%= link_to 'Home', root_path, :class => 'active' %> <span class="navDivider">//</span></li>
+          <li><%= link_to 'Contact', contact_path %></li>
+        </ul>
+      </div>
+    
+      <div id="rssFeed">
+        <span>
+          <a class="image" href="#">
+            <img width="16" height="16" alt="New Items RSS Feed" src="/images/rss.png" class="rssIcon" />
+          </a>
+          <a href="#">New Items RSS Feed</a>
+        </span>
+      </div>
+    
+    	<div id="copyright">
+        <p class="right">This theme create by <a href="http://themeforest.net/item/boutique/53709">ceephax</a> and available on <a href="http://themeforest.net/item/boutique/53709">Theme Forest</a></p>
+    	</div>
+    
+      <!--[if IE]><div class="f-bl"></div><div class="f-br"></div><![endif]-->
+    </div>
+    <!--[if IE]><div class="clearBottom">&nbsp;</div><![endif]-->
+  </body>
+</html>
