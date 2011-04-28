@@ -8,11 +8,14 @@
     <meta name="robots" content="INDEX,FOLLOW" />
 
     <%= stylesheet_link_tag 'default' %>
+    <%= css3buttons_stylesheets %>
+    
     <!--[if IE 7]><%= stylesheet_link_tag 'ie7-fix' %><![endif]-->
     <!--[if gt IE 7]><%= stylesheet_link_tag 'ie8-fix' %><![endif]-->
 
     <%= javascript_include_tag 'jquery', 'rails', 'application' %>
     <%= csrf_meta_tag %>
+    
   </head>
   <body class="<%= body_class %>">
     <% if flash %>
@@ -43,9 +46,10 @@
             <span class="topDivider">|</span>
             <%= number_to_currency current_order.price %>
           </span>
-          
-          <%= button_to "Shopping Bag", cart_path, :title => 'Shopping Bag', :method => :get %>
-          <%= button_to "checkout", checkout_path %>
+          <%= button_group do %>
+            <%= pill_button_link_to "Shopping Bag", cart_path, :title => 'Shopping Bag', :method => :get %>
+            <%= pill_button_link_to "checkout", checkout_path %>
+          <% end %>
         </div>
       </div>
     

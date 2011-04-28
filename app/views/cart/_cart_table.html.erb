@@ -27,7 +27,7 @@
           </td>
           <td class="itemTotal"><%= number_to_currency line_item.price %></td>
           <td>
-            <%= button_to "Remove", cart_path(:product_id => line_item.product.id), :method => :delete, :title => 'Remove' %>
+            <%= negative_remove_button_link_to "Remove", cart_path(:product_id => line_item.product.id), :method => :delete, :title => 'Remove' %>
           </td>
         </tr>
       <% end %>
@@ -41,7 +41,7 @@
     </tr>
     <tr class="noBorder">
       <td colspan="6">
-        <span class="right"><%= button_to "Proceed To Checkout", checkout_path, :method => :get %></span>
+        <span class="right"><%= arrowright_button_link_to "Proceed To Checkout", checkout_path, :method => :get %></span>
         <span class="continueShopping right"><%= link_to 'Continue shopping', root_url %> or</span>
       </td>
     </tr>
