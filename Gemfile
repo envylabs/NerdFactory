@@ -13,5 +13,3 @@ group :test do
   gem 'factory_girl_rails'
   gem 'mocha', :require  => nil
 end
-
-gem 'css3buttons'
