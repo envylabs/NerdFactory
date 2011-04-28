@@ -18,7 +18,7 @@
   		<p></p>
       
       <p>
-        <%= link_to raw('<span class="buttonAddToShoppingBag">Add to Shopping Bag</span>'), cart_path(:product_id => @product.id), :method => :post %>
+        <%= button_to "Add to Shopping Bag", cart_path(:product_id => @product.id) %>
       </p>
   	</div>
 

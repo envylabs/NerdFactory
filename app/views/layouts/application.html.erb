@@ -44,8 +44,8 @@
             <%= number_to_currency current_order.price %>
           </span>
           
-          <%= link_to raw('<span class="shoppingBag">Shopping Bag</span>'), cart_path, :title => 'Shopping Bag' %>
-          <%= link_to raw('<span class="checkout">Checkout</span>'), checkout_path %>
+          <%= button_to "Shopping Bag", cart_path, :title => 'Shopping Bag', :method => :get %>
+          <%= button_to "checkout", checkout_path %>
         </div>
       </div>
     

@@ -11,19 +11,6 @@
     </tr>
   </thead>
 
-  <tfoot>
-    <tr>
-      <td colspan="4"><span class="costBeforeShipping right">Cost before shipping</span></td>
-      <td colspan="5"><span class="totalPrice">=&nbsp;<strong><%= number_to_currency current_order.price %></strong></span></td>
-    </tr>
-    <tr class="noBorder">
-      <td colspan="6">
-        <span class="right"><%= link_to raw('<span class="buttonProceedToCheckout">Proceed To Checkout</span>'), checkout_path %></span>
-        <span class="continueShopping right"><%= link_to 'Continue shopping', root_url %> or</span>
-      </td>
-    </tr>
-  </tfoot>
-
   <tbody>
     <% if current_order.products.empty? %>
       <tr><td colspan="6">Your cart is currently empty.</td></tr>
@@ -40,11 +27,24 @@
           </td>
           <td class="itemTotal"><%= number_to_currency line_item.price %></td>
           <td>
-            <%= link_to raw('<span class="buttonRemove">Remove</span>'), cart_path(:product_id => line_item.product.id), :method => :delete, :title => 'Remove' %>
+            <%= button_to "Remove", cart_path(:product_id => line_item.product.id), :method => :delete, :title => 'Remove' %>
           </td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
+  
+  <tfoot>
+    <tr>
+      <td colspan="4"><span class="costBeforeShipping right">Cost before shipping</span></td>
+      <td colspan="5"><span class="totalPrice">=&nbsp;<strong><%= number_to_currency current_order.price %></strong></span></td>
+    </tr>
+    <tr class="noBorder">
+      <td colspan="6">
+        <span class="right"><%= button_to "Proceed To Checkout", checkout_path, :method => :get %></span>
+        <span class="continueShopping right"><%= link_to 'Continue shopping', root_url %> or</span>
+      </td>
+    </tr>
+  </tfoot>
 
 </table><!-- end shoppingBag-table -->

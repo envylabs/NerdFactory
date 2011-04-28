@@ -351,9 +351,13 @@ span.checkout:hover {
 	width: auto;
 }
 
+#details form {
+	float:left;
+}
+
 .details {
 	float: left;
-	padding-right: 8px;
+	padding: 5px 8px 0 0;
 	width: auto;
 }
 
@@ -762,7 +766,7 @@ span.amount {
 .itemTotal { font-weight: bold; }
 .totalPrice { padding: 20px 0 20px 11px; }
 .costBeforeShipping { padding: 0 49px 0 0; }
-.continueShopping {	padding: 2px 0 0 0; }
+.continueShopping {	padding: 2px 5px 0 0; }
 
 /*** Safari CSS Hack ***/
 @media screen and (-webkit-min-device-pixel-ratio:0){
