@@ -18,7 +18,7 @@
   		<p></p>
       
       <p>
-        <%= button_to "Add to Shopping Bag", cart_path(:product_id => @product.id) %>
+        <%= button_to "Add to Shopping Bag", cart_path(:product_id => @product.id), :method => :post %>
       </p>
   	</div>
 
