@@ -1,6 +1,6 @@
-# Code School Challenge Instructions #
+## Code School Challenge Instructions ##
 
-*Goal:* Implement the css3buttons gem by following the instructions in the readme.
+**Goal: Implement the css3buttons gem by following the instructions in the readme.**
 
 1. Style Shopping Bag and Checkout Button so they're two pill buttons grouped together:
    /app/views/layouts/application.html.erb - Line 47 & 48
